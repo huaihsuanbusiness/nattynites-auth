@@ -66,7 +66,7 @@ const Main = () => {
 
       <div className="footer">
         <div className="footer-text">Code of Conduct © 2024 NATTYNITES PTE. LTD. All Rights Reserved</div>
-        <img className="footer-image" src="/image-dark.png" alt="dynamic" />
+//        <img className="footer-image" src="/image-dark.png" alt="dynamic" />
       </div>
     </div>
   );
