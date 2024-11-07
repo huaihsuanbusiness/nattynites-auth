@@ -26,10 +26,10 @@ const Main = () => {
           <button className="get-started" onClick={() => window.open('https://nattynites.club', '_blank', 'noopener,noreferrer')}>Website</button>
         </div>
       </div>
+      <div className="modal_container">
+        <div className="modal_left">
 
-      <div className="modal">
 
-        <div style={{ padding: "20px", maxWidth: "600px", margin: "0px" }}>
           <h2>Welcome to the Nattynites Authentication (Beta)</h2>
 
           <ol>
@@ -59,14 +59,22 @@ const Main = () => {
               <br /><br />
             </li>
           </ol>
+
+
         </div>
-        <DynamicWidget />
-        <DynamicMethods isDarkMode={false} />
+
+        <div className="modal_right">
+
+
+          <DynamicWidget />
+          <DynamicMethods isDarkMode={false} />
+         
+        </div>
       </div>
 
       <div className="footer">
         <div className="footer-text">Code of Conduct © 2024 NATTYNITES PTE. LTD. All Rights Reserved</div>
-{/* //        <img className="footer-image" src="/image-dark.png" alt="dynamic" /> */}
+//        <img className="footer-image" src="/image-dark.png" alt="dynamic" />
       </div>
     </div>
   );
