@@ -74,7 +74,7 @@ function Form() {
 
       sendEmail("V07rogp7AO8E2S_y-","service_jbahh5p", "template_0r7mc9d", emailParams)
 
-      setMessage('Thank you for your submission. Nattynites will review the information and send the document afterward.');
+      setMessage('Thank you for your submission. Nattynites will review and send the document shortly.');
       clearAll()
       setIsMeIsChecked(false);
 
@@ -134,11 +134,10 @@ function Form() {
       .then(
         (result) => {
           console.log("Email sent successfully:", result.text);
-          alert("Email sent successfully!");
+          alert("Thank you for your submission. Nattynites will review and send the document shortly.");
         },
         (error) => {
           console.log("Error sending email:", error.text);
-          alert("Failed to send email.");
         }
       );
   }
