@@ -1,23 +1,15 @@
 {
-  "name": "nattynitesauth",
+  "name": "nattynites_auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@dynamic-labs/ethereum": "^3.6.1",
-    "@dynamic-labs/sdk-react-core": "^3.6.1",
     "@emailjs/browser": "^4.4.1",
-    "@sendgrid/mail": "^8.1.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "firebase": "^11.0.1",
-    "node-polyfill-webpack-plugin": "^4.0.0",
-    "path-browserify": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "viem": "^2.21.44",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -39,10 +39,10 @@ const Main = () => {
               <strong>Beta Testing Phase:</strong> This is our Beta MVP testing version. We are actively working on developing a user-friendly, full-scale system.
             </li>
             <br /><br />
-            {/* <li>
+            <li>
               <strong>Access Requirement:</strong> Only wallets holding Nattynites tokens are eligible to log in to the system.
             </li>
-            <br /><br /> */}
+            <br /><br />
             <li>
               <strong>Blockchain Compatibility:</strong> Currently, Nattynites tokens are issued exclusively on the Arbitrum network. Please ensure your wallet is connected to Arbitrum.
             </li>

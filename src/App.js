@@ -98,7 +98,6 @@ async function createUser(userInfo) {
     console.log("Document written with ID: ");
   } catch (e) {
     console.error("Error adding document: ", e);
-    //add analysis
   }
 }
 
