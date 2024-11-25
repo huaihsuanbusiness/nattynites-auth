@@ -18,6 +18,9 @@
     "viem": "^2.21.50",
     "web-vitals": "^2.1.4"
   },
+  "engines": {
+    "node": "22.11.0"
+  },
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
