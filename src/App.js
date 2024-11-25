@@ -4,8 +4,7 @@ import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { initializeApp } from 'firebase/app';
 
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, doc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
-import { safeStringify, extracObject } from "./Utility";
+import { getFirestore, doc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 
 // import { getAuth } from "firebase/auth";
 
@@ -51,7 +50,13 @@ const App = () => (
       walletConnectors: [EthereumWalletConnectors],
       events: {
         onAuthSuccess: (args) => {
-          checkAndSetFirestoreUserInfo(args)
+          if (isUserNew(args.user)) {
+            createUser(Object.assign({},
+              extracObject(args.user, userInfoFieldsToExtract),
+              extracObject(args.primaryWallet, addressFieldsToExtract),
+              extracObject(args.user.metadata, metaDataFieldsToExtract)))
+          }
+
         },
         onLogout: (args) => {
           console.log('onLogout was called', args);
@@ -62,19 +67,6 @@ const App = () => (
     <Main />
   </DynamicContextProvider>
 );
-
-async function checkAndSetFirestoreUserInfo(args) {
- 
-  const docRef = doc(db, "User Address", extracObject(args.primaryWallet, addressFieldsToExtract)["address"]);
-  const docSnap = await getDoc(docRef);
-
-  if (!docSnap.exists()) {
-    createUser(Object.assign({},
-      extracObject(args.user, userInfoFieldsToExtract),
-      extracObject(args.primaryWallet, addressFieldsToExtract),
-      extracObject(args.user.metadata, metaDataFieldsToExtract)))
-  }
-}
 
 async function createUser(userInfo) {
 
@@ -100,6 +92,52 @@ async function createUser(userInfo) {
     console.error("Error adding document: ", e);
     //add analysis
   }
+}
+
+
+
+export function extracObject(metadata, fields) {
+
+  function findUserInfo(obj, fields) {
+    if (typeof obj === 'object' && obj !== null) {
+
+      let result = {};
+      fields.forEach(field => {
+        if (field in obj) {
+          result[field] = obj[field];
+        }
+      });
+
+      if (Object.keys(result).length > 0) {
+        return result;
+      }
+
+      for (const key in obj) {
+        if (Array.isArray(obj[key])) {
+          for (let item of obj[key]) {
+            const nestedResult = findUserInfo(item, fields);
+            if (nestedResult && Object.keys(nestedResult).length > 0) {
+              return nestedResult;
+            }
+          }
+        } else {
+          const nestedResult = findUserInfo(obj[key], fields);
+          if (nestedResult && Object.keys(nestedResult).length > 0) {
+            return nestedResult;
+          }
+        }
+      }
+    }
+
+    return null; // Return null if no fields are found
+  }
+
+  return findUserInfo(metadata, fields);
+}
+
+function isUserNew(user) {
+  if (user != null && user?.newUser != null && user?.newUser == true) return true
+  else return false
 }
 
 export default App;

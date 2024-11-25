@@ -61,7 +61,7 @@ const Main = () => {
 
             <li>
               <strong>Privacy Policy:</strong> By using this platform, you consent to our
-              <a href="https://nattynites.club/terms.html" 
+              <a href="https://nattynites.club/privacy.html" 
               style={{ color: "#1E90FF", textDecoration: "none" }}
               target="_blank"> privacy policy, terms and conditions, and cookie policy</a>. 
               We are committed to protecting your data and ensuring its security.

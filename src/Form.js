@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
-import {safeStringify, extracObject} from './Utility.js';
-import { firebaseApp, firebaseConfig, metaDataFieldsToExtract, userInfoFieldsToExtract } from './App';
+import {safeStringify} from './Utility.js';
+import { firebaseApp, firebaseConfig, extracObject, metaDataFieldsToExtract, userInfoFieldsToExtract } from './App';
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, doc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { useDynamicContext, useIsLoggedIn, useUserWallets } from "@dynamic-labs/sdk-react-core";
